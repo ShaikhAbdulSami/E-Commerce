@@ -6,11 +6,11 @@ import logo from "/public/Logo.webp";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 
-const Header = () => {
+const Navbar = () => {
 	const [open, setOpen] = useState(false);
 	return (
 		<header>
-			<nav className='justify-between items-center lg:mx-24 lg:my-8 md:mx-32 md:my-8 m-8 flex'>
+			<nav className='justify-between items-center lg:mx-24 lg:my-8 md:m-16 m-8 flex'>
 				<Image src={logo} alt='logo' width={140} height={25} />
 				<ul className='lg:flex gap-x-12 hidden '>
 					<li className='list-none cursor-pointer'>Female</li>
@@ -83,4 +83,4 @@ const Header = () => {
 	);
 };
 
-export default Header;
+export default Navbar;
