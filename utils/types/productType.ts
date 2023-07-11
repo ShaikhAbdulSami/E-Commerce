@@ -9,6 +9,7 @@ export type Product = {
 	detail: string;
 	care: string[];
 	category: string;
+	slug: string;
 }[];
 export type ProductsCard = {
 	img: StaticImageData;
