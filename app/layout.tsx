@@ -18,7 +18,7 @@ export default function RootLayout({
 		<html lang='en'>
 			<body className={"font-sans"}>
 				<Header />
-				<main className='lg:mx-24 lg:my-8 md:m-16 m-8'>{children}</main>
+				<main className='lg:mx-24 lg:my-16 md:m-16 m-8'>{children}</main>
 			</body>
 		</html>
 	);
