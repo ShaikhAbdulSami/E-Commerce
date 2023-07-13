@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body className={"font-sans"}>
+			<body>
 				<Header />
 				<main className='lg:mx-24 lg:my-16 md:m-16 m-8'>{children}</main>
 			</body>
