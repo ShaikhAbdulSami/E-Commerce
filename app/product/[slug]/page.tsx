@@ -1,16 +1,25 @@
 import { Button } from "@/components/ui/button";
+import { client } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
 import { Products } from "@/utils/mock/product";
+import { Product } from "@/utils/types/productType";
 import { Minus, Plus, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
-const getProduct = (slug: string) => {
-	return Products.filter((product) => product.slug === slug);
+const getAllProduct = async (slug: string) => {
+	const res =
+		await client.fetch(`*[_type == 'Product' && slug.current == "${slug}"]{
+		img,title,price,tag,care,detail
+	}`);
+	return res;
 };
 
-const page = ({ params }: { params: { slug: string } }) => {
+const page = async ({ params }: { params: { slug: string } }) => {
+	console.log(params.slug);
+
 	const Sizes = ["XS", "S", "M", "L", "XL"];
-	const result = getProduct(params.slug);
+	const result: Product = await getAllProduct(params.slug);
 	return (
 		<>
 			{result.map((prod) => (
@@ -22,14 +31,22 @@ const page = ({ params }: { params: { slug: string } }) => {
 							{/* small */}
 							<div className=' flex flex-col gap-4 '>
 								<Image
-									src={prod.img}
+									src={urlForImage(prod.img).url()}
 									alt=''
 									className=' w-[100px] h-[100px] cursor-pointer '
+									width={100}
+									height={100}
 								/>
 							</div>
 							{/* Large */}
 							<div className=' w-3/4 h-full  '>
-								<Image src={prod.img} alt='' className=' w-full h-full ' />
+								<Image
+									src={urlForImage(prod.img).url()}
+									alt=''
+									className=' w-full h-full '
+									width={572}
+									height={613}
+								/>
 							</div>
 						</div>
 						{/* Detail */}

@@ -1,3 +1,4 @@
+import { urlForImage } from "@/sanity/lib/image";
 import { ProductsCard } from "@/utils/types/productType";
 import Image from "next/image";
 import React from "react";

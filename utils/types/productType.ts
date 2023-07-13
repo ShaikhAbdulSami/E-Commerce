@@ -1,19 +1,25 @@
 import { StaticImageData } from "next/image";
+import { Image } from "sanity";
 
 export type Product = {
 	id: number;
-	img: StaticImageData;
+	img: any;
 	title: string;
 	tag: string;
 	price: number;
 	detail: string;
 	care: string[];
 	category: string;
-	slug: string;
+	slug: Slug;
 }[];
 export type ProductsCard = {
-	img: StaticImageData;
+	img: any;
 	title: string;
 	type: string;
 	price: number;
+};
+
+type Slug = {
+	_type: string;
+	current: string;
 };
