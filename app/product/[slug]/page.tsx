@@ -16,8 +16,6 @@ const getAllProduct = async (slug: string) => {
 };
 
 const page = async ({ params }: { params: { slug: string } }) => {
-	console.log(params.slug);
-
 	const Sizes = ["XS", "S", "M", "L", "XL"];
 	const result: Product = await getAllProduct(params.slug);
 	return (

@@ -6,8 +6,11 @@ import Link from "next/link";
 import React from "react";
 
 const getMProduct = async () => {
-	const res = await client.fetch(`*[_type == 'Product' && category == 'Male' ]{
-		title,img,price,tag,slug,_id
+	const res =
+		await client.fetch(`*[_type == 'Product'&& category->category == 'Male']{
+		title,img, price,tag, slug, category -> {
+          category 
+        }
 	}`);
 	return res;
 };

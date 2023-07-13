@@ -1,5 +1,3 @@
-// schema.js
-
 export const Products = {
 	name: "Product",
 	title: "Products",
@@ -34,7 +32,12 @@ export const Products = {
 		{
 			name: "category",
 			title: "Category",
-			type: "string",
+			type: "reference",
+			to: [
+				{
+					type: "category",
+				},
+			],
 		},
 		{
 			name: "slug",

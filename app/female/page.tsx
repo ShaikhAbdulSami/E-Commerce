@@ -8,9 +8,11 @@ import React from "react";
 
 const getFProduct = async () => {
 	const res =
-		await client.fetch(`*[_type == 'Product' && category == 'Female' ]{
-		title,img,price,tag,slug,_id
-	}`);
+		await client.fetch(`*[_type == 'Product'&& category->category == 'Female']{
+			title,img, price,tag, slug, category -> {
+			  category 
+			}
+		}`);
 	return res;
 };
 const page = async () => {
