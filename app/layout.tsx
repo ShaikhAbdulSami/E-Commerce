@@ -18,7 +18,9 @@ export default function RootLayout({
 		<html lang='en'>
 			<body>
 				<Header />
-				<main className='lg:mx-24 lg:my-16 md:m-16 m-8'>{children}</main>
+				<main className='lg:px-24 lg:py-16 md:p-16 p-8 mx-auto min-h-screen container'>
+					{children}
+				</main>
 			</body>
 		</html>
 	);

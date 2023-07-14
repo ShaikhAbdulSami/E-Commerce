@@ -16,8 +16,8 @@ const Navbar = () => {
 		{ name: "All Products", link: "/products" },
 	];
 	return (
-		<header>
-			<nav className='justify-between items-center lg:mx-24 lg:my-8 md:m-16 m-8 flex'>
+		<>
+			<nav className='justify-between items-center lg:px-24 lg:py-8 md:p-16 p-8 flex mx-auto container'>
 				<Link href={"/"}>
 					<Image src={logo} alt='logo' width={140} height={25} />
 				</Link>
@@ -84,7 +84,7 @@ const Navbar = () => {
 					)}
 				</div>
 			</nav>
-		</header>
+		</>
 	);
 };
 
