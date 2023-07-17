@@ -6,7 +6,10 @@ export const Products: Product = [
 	{
 		id: 1,
 		title: "Brushed Raglan Sweatshirt",
-		slug: "brushed-raglan-sweatshirt",
+		slug: {
+			_type: "Slug",
+			current: "brushed-raglan-sweatshirt",
+		},
 		img: P1,
 		price: 195.0,
 		tag: "Sweater",
@@ -23,7 +26,10 @@ export const Products: Product = [
 	{
 		id: 1,
 		title: "Flex Push Button Bomber",
-		slug: "flex-push-button-bomber",
+		slug: {
+			_type: "slug",
+			current: "flex-push-button-bomber",
+		},
 		img: P2,
 		price: 225.0,
 		tag: "Jackets",
