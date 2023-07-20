@@ -1,3 +1,4 @@
+import Detail from "@/components/Product/Detail";
 import { Button } from "@/components/ui/button";
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
@@ -10,14 +11,16 @@ import React from "react";
 const getAllProduct = async (slug: string) => {
 	const res =
 		await client.fetch(`*[_type == 'Product' && slug.current == "${slug}"]{
-		img,title,price,tag,care,detail
+		img,title,price,tag,care,detail,_id
 	}`);
 	return res;
 };
 
 const page = async ({ params }: { params: { slug: string } }) => {
-	const Sizes = ["XS", "S", "M", "L", "XL"];
+	// const Sizes = ["XS", "S", "M", "L", "XL"];
 	const result: Product = await getAllProduct(params.slug);
+	console.log(result);
+
 	return (
 		<>
 			{result.map((prod) => (
@@ -48,55 +51,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
 							</div>
 						</div>
 						{/* Detail */}
-						<div className=' flex flex-col grow shrink gap-10 mt-16 '>
-							{/* Name and Category */}
-							<div>
-								<h3 className=' font-normal text-[1.625rem] tracking-wider leading-[33px] text-[#212121] '>
-									{prod.title}
-								</h3>
-								<span className=' font-semibold text-[1.3rem] opacity-30 '>
-									{prod.tag}
-								</span>
-							</div>
-							{/* Sizes */}
-							<div>
-								<p className=' text-[#212121] font-bold text-[0.9rem] leading-4 tracking-wider '>
-									SELECT SIZE
-								</p>
-								<ul className='flex gap-4 mt-4 '>
-									{Sizes.map((itm, i) => (
-										<li
-											className='w-[40px] h-[40px] flex justify-center items-center rounded-full cursor-pointer text-base text-[#666] font-bold leading-4 tracking-wider '
-											key={i}>
-											{itm}
-										</li>
-									))}
-									{/* <li className="w-[40px] h-[40px] flex justify-center items-center rounded-full cursor-pointer text-base text-[#666] font-bold leading-4 tracking-wider "></li> */}
-								</ul>
-							</div>
-							{/* Quantity */}
-							<div className=' flex gap-8  '>
-								<h4 className='font-bold'>Quantity: </h4>
-								<div className='w-full'>
-									<span className=' mr-3 border-2 border-[#f1f1f1] bg-[#f1f1f1] rounded-full px-2 pb-3 pt-[5px] cursor-pointer '>
-										<Minus className='inline-block' />
-									</span>
-									<span>1</span>
-									<span className=' ml-3 border-2 border-[#f1f1f1] bg-[#f1f1f1] rounded-full px-2 pb-3 pt-[5px] cursor-pointer '>
-										<Plus className='inline-block' />
-									</span>
-								</div>
-							</div>
-							{/* Add to Cart */}
-							<div className=' flex items-center gap-4  '>
-								<Button className=' text-sm w-2/5 font-sans font-semibold leading-4 bg-[#212121]  py-6 flex items-center justify-center gap-2 text-[#fff] cursor-pointer rounded-none'>
-									<ShoppingCart /> Add to Cart
-								</Button>
-								<p className=' font-bold text-2xl tracking-widest text-[#212121] leading-8 '>
-									${prod.price}.00
-								</p>
-							</div>
-						</div>
+						<Detail result={result} />
 					</div>
 					{/* Desc Container */}
 					<div className=' bg-[#fff] flex flex-col mt-16 pt-8 pb-24 px-16 gap-8 '>
