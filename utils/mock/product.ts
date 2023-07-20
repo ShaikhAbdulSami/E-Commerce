@@ -5,6 +5,7 @@ import P2 from "/public/P2.png";
 export const Products: Product = [
 	{
 		id: 1,
+		_id: 3405983458358,
 		title: "Brushed Raglan Sweatshirt",
 		slug: {
 			_type: "Slug",
@@ -25,6 +26,7 @@ export const Products: Product = [
 	},
 	{
 		id: 1,
+		_id: 920572057,
 		title: "Flex Push Button Bomber",
 		slug: {
 			_type: "slug",

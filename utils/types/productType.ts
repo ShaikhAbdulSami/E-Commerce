@@ -2,6 +2,7 @@ import { StaticImageData } from "next/image";
 import { Image } from "sanity";
 
 export type Product = {
+	_id: any;
 	id: number;
 	img: any;
 	title: string;
