@@ -1,6 +1,7 @@
 import Header from "@/components/Navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { Providers } from "@/redux/Provider";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +18,12 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body>
-				<Header />
-				<main className='lg:px-24 lg:py-16 md:p-16 p-8 mx-auto min-h-screen container'>
-					{children}
-				</main>
+				<Providers>
+					<Header />
+					<main className='lg:px-24 lg:py-16 md:p-16 p-8 mx-auto min-h-screen container'>
+						{children}
+					</main>
+				</Providers>
 			</body>
 		</html>
 	);
