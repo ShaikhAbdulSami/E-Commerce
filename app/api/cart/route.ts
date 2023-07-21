@@ -1,10 +1,16 @@
 import { cartTable, db } from "@/lib/drizzle";
+import { eq } from "drizzle-orm";
 import { cookies } from "next/dist/client/components/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuid } from "uuid";
 export const GET = async (request: Request) => {
+	const user_id = cookies().get("user_id")?.value as string;
+
 	try {
-		const res = await db.select().from(cartTable);
+		const res = await db
+			.select()
+			.from(cartTable)
+			.where(eq(cartTable.user_id, user_id));
 		return NextResponse.json({ res });
 	} catch (error) {
 		return NextResponse.json({ error });
