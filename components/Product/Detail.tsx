@@ -15,7 +15,7 @@ const Detail: FC<{ result: Product }> = ({ result }) => {
 			}),
 		});
 		const result = await res.json();
-		console.log(result);
+		// console.log(result);
 	};
 	return (
 		<>
