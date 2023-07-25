@@ -14,9 +14,10 @@ export type Product = {
 	slug: Slug;
 }[];
 export type ProductsCard = {
+	_id: string;
 	img: any;
 	title: string;
-	type: string;
+	tag: string;
 	price: number;
 };
 
