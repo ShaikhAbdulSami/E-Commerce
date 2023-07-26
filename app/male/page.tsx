@@ -24,7 +24,8 @@ const page = async () => {
 						title={prod.title}
 						img={urlForImage(prod.img).url()}
 						price={prod.price}
-						type={prod.tag}
+						tag={prod.tag}
+						_id={prod._id}
 					/>
 				</Link>
 			))}
