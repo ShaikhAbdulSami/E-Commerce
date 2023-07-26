@@ -91,13 +91,13 @@ export const PUT = async (request: NextRequest) => {
 
 		if (existingCartItem.length > 0) {
 			// If the product already exists in the cart, increase the quantity
-			const q = existingCartItem.map((itm) => {
-				return itm.quantity;
-			});
+			// const q = existingCartItem.map((itm) => {
+			// 	return itm.quantity;
+			// });
 			const res = await db
 				.update(cartTable)
 				.set({
-					quantity: q[0] + req.quantity,
+					quantity: req.quantity,
 				})
 				.where(
 					and(
