@@ -24,7 +24,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
 	return (
 		<>
 			{result.map((prod) => (
-				<div className='bg-[#fcfcfc]' key={prod.id}>
+				<div className='bg-[#fcfcfc]' key={prod._id}>
 					{/* Detail Container */}
 					<div className=' flex justify-between flex-col lg:flex-row'>
 						{/* Images */}
