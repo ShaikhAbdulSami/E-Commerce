@@ -14,8 +14,8 @@ const Navbar = () => {
 	const dispatch = useAppDispatch();
 	const [open, setOpen] = useState(false);
 	const getProduct = async () => {
-		const res = await fetch("/api/cart", { method: "GET" });
-		const result = await res.json();
+		// const res = await fetch("/api/cart", { method: "GET" });
+		// const result = await res.json();
 		// console.log(result.res);
 		dispatch(clearCart());
 		dispatch(getCart());
@@ -30,7 +30,7 @@ const Navbar = () => {
 		(state: RootState) => state.CartSlice.totalQuantity
 	);
 	useEffect(() => {
-		dispatch(clearCart());
+		// dispatch(clearCart());
 		getProduct();
 	}, []);
 	return (
