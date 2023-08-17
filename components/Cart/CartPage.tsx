@@ -5,7 +5,7 @@ import CartItem from "./CartItem";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 // import { CartAction, fetchCartProductsList } from "@/redux/slice/cartSlice";
 import { RootState } from "@/redux/store";
-import { clearCart, fetchProducts } from "@/redux/slice/cartSlice";
+import { clearCart, fetchProducts, getCart } from "@/redux/slice/cartSlice";
 import { ProductsCard } from "@/utils/types/productType";
 import { Button } from "../ui/button";
 
@@ -24,8 +24,8 @@ const CartPage = () => {
 	// 	dispatch(getCartItem(result.res));
 	// };
 	// useEffect(() => {
-	// 	dispatch(clearCart);
-	// 	getProduct();
+	// 	// dispatch(clearCart());
+	// 	dispatch(getCart());
 	// }, []);
 
 	useEffect(() => {
@@ -34,7 +34,8 @@ const CartPage = () => {
 			const productIds = cart.map(
 				(item: { product_id: any }) => item.product_id
 			);
-			dispatch(clearCart());
+			// dispatch(clearCart());
+			// dispatch(getCart());
 			dispatch(fetchProducts(productIds));
 		}
 	}, [cart]);
