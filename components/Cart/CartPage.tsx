@@ -50,10 +50,10 @@ const CartPage = () => {
 					<>
 						<div className=' flex gap-16 grow-[3] shrink basis-0 flex-col mt-8 '>
 							<>
-								{product.map((itm: ProductsCard) => {
+								{product.map((itm: ProductsCard, i: number) => {
 									return (
 										<>
-											<CartItem prod={itm} />
+											<CartItem prod={itm} i={i} />
 											{/* </div> */}
 										</>
 									);
