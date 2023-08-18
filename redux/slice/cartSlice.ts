@@ -89,12 +89,16 @@ const cartSlice = createSlice({
 		},
 		removeFromCart: (state, action: PayloadAction<string>) => {
 			const productId = action.payload;
-			const itemInCartIndex = state.cart.findIndex(
-				(item) => item.product_id === productId
+			// const itemInCartIndex = state.cart.findIndex(
+			// 	(item) => item.product_id === productId
+			// );
+			// if (itemInCartIndex !== -1) {
+			// 	state.cart = state.cart.splice(itemInCartIndex, 1);
+			// }
+			const cartItems = state.cart.filter(
+				(item) => item.product_id !== productId
 			);
-			if (itemInCartIndex !== -1) {
-				state.cart.splice(itemInCartIndex, 1);
-			}
+			state.cart = cartItems;
 
 			state.totalQuantity = state.cart.reduce(
 				(accumulator: number, item: CartItem) => accumulator + item.quantity,
