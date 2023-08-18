@@ -1,16 +1,23 @@
 "use client";
 
 import Image from "next/image";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
 import { urlForImage } from "@/sanity/lib/image";
 import { ProductsCard } from "@/utils/types/productType";
-import { decrementQuantity, incrementQuantity } from "@/redux/slice/cartSlice";
+import {
+	clearCart,
+	decrementQuantity,
+	fetchProducts,
+	getCart,
+	incrementQuantity,
+	removeFromCart,
+} from "@/redux/slice/cartSlice";
 
-const CartItem: FC<{ prod: ProductsCard }> = ({ prod }) => {
+const CartItem: FC<{ prod: ProductsCard; i: number }> = ({ prod, i }) => {
 	const dispatch = useAppDispatch();
 	const cart = useAppSelector((state: RootState) => state.CartSlice.cart);
 	const product = useAppSelector((state: RootState) => state.CartSlice.product);
@@ -18,11 +25,10 @@ const CartItem: FC<{ prod: ProductsCard }> = ({ prod }) => {
 	const qty = useAppSelector(
 		(state: RootState) => state.CartSlice.totalQuantity
 	);
-	console.log(prod);
+	console.log(cart);
 	const [quantity, setQuantity] = useState(
 		cart.find((item) => item.product_id === prod._id)?.quantity as number
 	);
-	console.log(quantity);
 	const updateQuantity = async (id: string, qty: number) => {
 		const res = await fetch("/api/cart", {
 			method: "PUT",
@@ -33,6 +39,15 @@ const CartItem: FC<{ prod: ProductsCard }> = ({ prod }) => {
 		});
 		const result = await res.json();
 		console.log("PUT", result);
+	};
+	const deleteProduct = async (id: string) => {
+		dispatch(removeFromCart(id));
+
+		const res = await fetch(`/api/cart?product_id=${id}`, {
+			method: "DELETE",
+		});
+		const result = await res.json();
+		console.log("DELETE", result);
 	};
 	const handleIncrease = (id: string) => {
 		setQuantity((prevQuantity: number) => {
@@ -76,7 +91,7 @@ const CartItem: FC<{ prod: ProductsCard }> = ({ prod }) => {
 						<h3 className=' font-light text-[1.3rem] text-[#212121] leading-6 '>
 							{prod.title}
 						</h3>
-						<Button variant={"ghost"}>
+						<Button variant={"ghost"} onClick={() => deleteProduct(prod._id)}>
 							<Trash2 color='black' />
 						</Button>
 					</div>
@@ -95,7 +110,12 @@ const CartItem: FC<{ prod: ProductsCard }> = ({ prod }) => {
 					{/* Price & Qty */}
 					<div className=' flex justify-between '>
 						<span className=' text-lg font-bold leading-5 tracking-widest text-[#212121] '>
-							${prod.price * quantity}
+							$
+							{
+								(prod.price *
+									cart.find((item) => item.product_id === prod._id)
+										?.quantity!) as number
+							}
 						</span>
 						<div>
 							<Button
@@ -103,7 +123,9 @@ const CartItem: FC<{ prod: ProductsCard }> = ({ prod }) => {
 								onClick={() => handleDecrease(prod._id)}>
 								<Minus className='inline-block' color='black' />
 							</Button>
-							<span>{quantity}</span>
+							<span>
+								{cart.find((item) => item.product_id === prod._id)?.quantity}
+							</span>
 							<Button
 								className=' ml-3 border-2 border-[#f1f1f1] bg-[#f1f1f1] rounded-full px-[5px] py-[3px] cursor-pointer '
 								onClick={() => handleIncrease(prod._id)}>
