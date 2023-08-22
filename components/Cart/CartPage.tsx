@@ -8,6 +8,7 @@ import { RootState } from "@/redux/store";
 import { clearCart, fetchProducts, getCart } from "@/redux/slice/cartSlice";
 import { ProductsCard } from "@/utils/types/productType";
 import { Button } from "../ui/button";
+import CheckoutButton from "./CheckoutButton";
 
 const CartPage = () => {
 	// const [data, setData] = useState<Cart[]>();
@@ -75,9 +76,10 @@ const CartPage = () => {
 							</div>
 							{/* Checkout */}
 							<div className='flex justify-between gap-16'>
-								<Button className=' font-semibold leading-5 bg-[#212121] flex justify-center items-center gap-2 text-[#fff] h-[42px] w-[212px] '>
+								{/* <Button className=' font-semibold leading-5 bg-[#212121] flex justify-center items-center gap-2 text-[#fff] h-[42px] w-[212px] '>
 									Proceed to Checkout
-								</Button>
+								</Button> */}
+								<CheckoutButton />
 							</div>
 						</div>
 					</>
