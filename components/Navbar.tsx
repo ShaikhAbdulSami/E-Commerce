@@ -85,7 +85,9 @@ const Navbar = () => {
 							/>
 							<ul className={`flex gap-y-4 flex-col text-center items-center`}>
 								<Link href={"/cart"}>
-									<Button className='flex w-12 h-22 bg-[#f1f1f1] rounded-full border-none relative transition delay-300 ease-in-out'>
+									<Button
+										className='flex w-12 h-22 bg-[#f1f1f1] rounded-full border-none relative transition delay-300 ease-in-out'
+										onClick={() => setOpen(!open)}>
 										<ShoppingCart color='black' />
 										<span className='absolute top-0 right-1 text-white bg-red-600 w-4 h-4 rounded-lg text-center font-semibold text-xs'>
 											{qty}
