@@ -77,3 +77,350 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+
+  /* Slider */
+  .product-card {
+    padding: 2rem 0 2rem 1.3rem;
+    transform: scale(1, 1);
+    transition: transform 0.5s ease;
+  }
+
+  .product-card img {
+    width: 380px;
+    height: 400px;
+  }
+
+  .product-card:hover {
+    transform: scale(1.1, 1.1)
+  }
+
+  .product-name,
+  .product-price {
+    font-weight: 600;
+    color: #212121;
+    margin-top: 0.5rem;
+    line-height: 24px;
+  }
+
+  .product-name {
+    font-size: 1.1rem;
+    letter-spacing: 0.03em;
+  }
+
+  .product-price {
+    font-size: 1.2rem;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    padding: 2rem;
+  }
+
+  .swiper-button-prev {
+    background-image: url('../public/Back.png');
+  }
+
+  .swiper-button-next {
+    background-image: url('../public/Next.png');
+  }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    display: none;
+  }
+
+  /* Feature */
+  .features-section {
+    margin-top: 4rem;
+  }
+
+  .features-section .title {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 2rem;
+    background: linear-gradient(180deg, white 50%, #FBFCFF 50%);
+  }
+
+  .features-section .title h1 {
+    font-weight: 700;
+    font-size: 2.75rem;
+    line-height: 55px;
+    letter-spacing: 0.03em;
+    color: #212121;
+    width: 45%;
+  }
+
+  .features-section .content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 4rem;
+    background-color: #FBFCFF;
+  }
+
+  .features-section .content .left {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .features-section .content .left .feature-background {
+    font-weight: 800;
+    font-size: 6.875rem;
+    line-height: 110px;
+    position: absolute;
+    color: #212121;
+    opacity: 0.07;
+    z-index: 1;
+  }
+
+  .features-section .content .left div {
+    width: 70%;
+    z-index: 2;
+  }
+
+  .features-section .content .left h3 {
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 20px;
+    letter-spacing: 0.03em;
+    color: #212121;
+    margin-bottom: 1rem;
+  }
+
+  .features-section .content .left p {
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 22px;
+    letter-spacing: 0.05em;
+    color: #212121;
+  }
+
+  .features-section .content .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .features-section .content .right div {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .features-section .content .right p {
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 26px;
+    text-align: justify;
+    color: #212121;
+  }
+
+  .features-section .btn {
+    font-size: 0.875rem;
+    width: 50%;
+  }
+
+  /* Footer */
+  footer {
+    background-color: white;
+  }
+
+  .footer {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+
+  .footer .logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+  }
+
+  .icon-container {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .icon-container div {
+    padding: 10px 12px;
+    background-color: #F1F1F1;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  footer li {
+    margin-top: 15px;
+  }
+
+  footer li:first-child {
+    margin-top: 25px;
+  }
+
+  footer p,
+  footer li {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 22px;
+    color: #666666;
+  }
+
+  .footer-links h3 {
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    color: #666666;
+  }
+
+  .copyright {
+    margin-top: 6rem;
+    border-top: 1px solid #666666;
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+
+  .copyright p {
+    margin: 1.5rem 8rem;
+  }
+
+  .copyright span {
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 15px;
+    color: #212121;
+  }
+
+  /* Responsive Design */
+  @media screen and (max-width: 1210px) {
+
+    /* Slider */
+    .product-card {
+      padding: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Feature */
+    /* .features-section .title,
+    .features-section .content {
+      padding: 2rem 4rem;
+    } */
+
+    .features-section {
+      margin-top: 0;
+    }
+
+    .features-section .title {
+      justify-content: center;
+    }
+
+    .features-section .title h1 {
+      width: 80%;
+    }
+
+    .features-section .content {
+      grid-template-columns: 1fr;
+      grid-gap: 4rem;
+    }
+
+    .features-section .content .left {
+      grid-gap: 2rem;
+    }
+
+    .features-section .content .left div {
+      width: 100%;
+    }
+
+    /* footer */
+    /* .footer {
+      padding: 4rem;
+    } */
+  }
+
+  @media screen and (max-width: 1000px) {
+    .features-section .title h1 {
+      width: 100%;
+    }
+
+    .features-section .content .left .feature-background {
+      font-size: 6rem;
+    }
+
+    /* footer */
+    .footer {
+      grid-template-columns: 1fr;
+      grid-gap: 2rem;
+    }
+
+    .footer .logo {
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .footer .logo p {
+      width: 60%;
+    }
+
+    .copyright {
+      margin-top: 0;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .copyright p {
+      margin: 0.8rem 2rem;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+
+    /* Slider */
+    .product-image {
+      width: 300px;
+      height: 320px;
+    }
+
+    /* feature */
+
+    /* .features-section,
+    .products,
+    .product-desc-container {
+      padding: 2rem;
+    } */
+
+    /* .features-section .content {
+      padding: 0 2rem;
+    } */
+
+    .features-section .title h1 {
+      font-size: 2.5rem;
+    }
+
+    .features-section .content .left .feature-background {
+      font-size: 3rem;
+    }
+
+    .features-section .content .right {
+      flex-direction: column;
+    }
+
+    /* footer */
+    /* .footer {
+      padding: 4rem 2rem;
+    } */
+
+    .copyright {
+      grid-template-columns: 1fr;
+    }
+  }
+}
