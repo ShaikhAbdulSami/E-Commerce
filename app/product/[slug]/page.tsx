@@ -26,7 +26,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
 			{result.map((prod) => (
 				<div className='bg-[#fcfcfc]' key={prod._id}>
 					{/* Detail Container */}
-					<div className=' flex justify-between flex-col lg:flex-row'>
+					<div className=' flex justify-between flex-col min-[1200px]:flex-row'>
 						{/* Images */}
 						<div className=' flex grow-[2] shrink gap-8 '>
 							{/* small */}
@@ -54,7 +54,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
 						<Detail result={result} />
 					</div>
 					{/* Desc Container */}
-					<div className=' bg-[#fff] flex flex-col mt-16 pt-8 pb-24 px-16 gap-8 '>
+					<div className=' bg-[#fff] flex flex-col mt-16 pt-8 pb-24 gap-8 '>
 						{/* Title */}
 						<div className='flex z-[2] border-b-2 border-[#c4c4c4] relative w-full h-[150px] '>
 							{/* BG */}

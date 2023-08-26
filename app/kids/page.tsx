@@ -17,7 +17,7 @@ const getMProduct = async () => {
 const page = async () => {
 	let kids: Product = await getMProduct();
 	return (
-		<div className='grid justify-between items-center gap-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-8 '>
+		<div className='grid justify-between items-center gap-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-3  '>
 			{kids.length > 0 ? (
 				kids.map((prod, i) => (
 					<Link href={`/product/${prod.slug.current}`} key={prod.slug.current}>
