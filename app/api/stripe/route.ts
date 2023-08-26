@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
 	const redirectURL =
 		process.env.NODE_ENV === "development"
 			? "http://localhost:3000"
-			: "your deployed url";
+			: "https://ecommerce-sooty-zeta.vercel.app";
 
 	const session = await stripe.checkout.sessions.create({
 		payment_method_types: ["card"],
